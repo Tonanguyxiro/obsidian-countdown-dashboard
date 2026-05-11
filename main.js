@@ -22,14 +22,14 @@ const formatDateForInput = (value) => {
     const normalized = normalizeDateValue(value);
     if (!normalized) return "";
     const date = new Date(normalized);
-    if (isNaN(date.getTime())) return normalized;
+    if (isNaN(date.getTime())) return "";
     const pad = (num) => String(num).padStart(2, "0");
     return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 };
 
 const formatDateForDisplay = (value) => {
     if (typeof value !== "string") return "";
-    return value.replace("T", " ");
+    return value.split("T").join(" ");
 };
 
 const isValidDateValue = (value) => {
